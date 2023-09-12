@@ -1,0 +1,17 @@
+{
+    "firstname": "Alexander",
+    "lastname": "Wessner",
+    "age": 29,
+    "languages": [
+        "Python",
+        "C#",
+        "Javascript"
+    ],
+    "contactinfo": {
+        "phone": "0723868453",
+        "email": [
+            "wessneralexander@gmail.com",
+            "wessneralexander@hotmail.com"
+        ]
+    }
+}
