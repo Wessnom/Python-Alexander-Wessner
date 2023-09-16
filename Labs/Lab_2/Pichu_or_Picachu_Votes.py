@@ -1,6 +1,7 @@
 import os
 import math
 import matplotlib.pyplot as plt
+from collections import Counter
 
 # functions
 
@@ -41,8 +42,7 @@ while True:
         break
 
     try:
-        width, height = map(float, user_input.split(","))
-
+        width, height = map(float, user_input.split(",")) # Map(float) applicerar en given funktion, mitt fall float på user_inputs, returnerar ny iterable med transformerade element.
         if width < 0 or height < 0:
             print("Both width and height should be positive numbers.")
             continue
