@@ -57,10 +57,10 @@ while True:
 
 
 
-#test_points = [(25, 32), (24.2, 31.5), (22, 34), (20.5, 34)]
-#for test_point in test_points:
-#    classification = classify_test_point(test_point, data_points)
-#   print(f"Sample with (width, height): {test_point} classified as {classification}")
+test_points = [(25, 32), (24.2, 31.5), (22, 34), (20.5, 34)]
+for test_point in test_points:
+    classification = classify_test_point(test_point, data_points)
+    print(f"Sample with (width, height): {test_point} classified as {classification}")
 
 x0, y0, x1, y1 = [], [], [], []
 

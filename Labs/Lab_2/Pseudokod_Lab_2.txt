@@ -1,1 +1,16 @@
+# Grunduppgift
+
 Läs in datan och spara i lämplig datastruktur... ()
+Plotta alla träningspunkter (olika färg för klass men i samma fönster)
+Läs in alla testpunkter
+Gör för varje testpunkt
+    Beräkna avstånd mellan testpunkt och träningspunkt
+        Närmaste punkt tillhör Pichu:
+            Klassifiera testpunkt som Pichu
+        Annars:
+            Klassifiera testpunkt som Pikachu
+
+
+# Tillägsuppgifter
+
+Låt användaren mata in 
