@@ -20,3 +20,7 @@ Användarvänliga error messages.
 Den approachen vi använt med närmaste punkten kan klassificera fel när punkterna för respektive
 klass går in i varandra. Nu ska du istället välja de tio närmaste punkterna till din testpunkt. Den klass
 testpunkten tillhör avgörs av majoritetsröstning av de närmaste punkterna.
+
+
+
+Konvertera allting till .ipynb
