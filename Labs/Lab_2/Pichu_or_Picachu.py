@@ -62,6 +62,11 @@ while True:
 #    classification = classify_test_point(test_point, data_points)
 #    print(f"Sample with (width, height): {test_point} classified as {classification}")
 
+
+""" https://python-charts.com/correlation/scatter-plot-matplotlib/
+    hjälpmedel vid integrering av matplotlib scatter-plot
+"""
+
 x0, y0, x1, y1 = [], [], [], []
 
 for (width, height, label) in data_points:
@@ -72,11 +77,17 @@ for (width, height, label) in data_points:
         x1.append(width)
         y1.append(height)
 
-plt.scatter(x0, y0, label='Pichu', color='orange')
-plt.scatter(x1, y1, label='Pikachu', color='yellow')
-plt.xlabel('Width (cm)')
-plt.ylabel('Height (cm)')
-plt.legend()
-plt.title('Pichu and Pikachu Data Points')
+fig, ax = plt.subplots()
+
+
+ax.scatter(x0, y0, label='Pichu', color='orange')
+ax.scatter(x1, y1, label='Pikachu', color='yellow')
+ax.set_xlabel('Width (cm)')
+ax.set_ylabel('Height (cm)')
+ax.legend()
+ax.set_title('Pichu and Pikachu Data Points')
+ax.set_facecolor('lightgray')
+
+fig.patch.set_facecolor('lightblue')
 
 plt.show()
