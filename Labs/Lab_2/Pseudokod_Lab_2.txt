@@ -1,4 +1,4 @@
-# Grunduppgift
+# Grunduppgift 
 
 Läs in datan och spara i lämplig datastruktur... ()
 Plotta alla träningspunkter (olika färg för klass men i samma fönster)

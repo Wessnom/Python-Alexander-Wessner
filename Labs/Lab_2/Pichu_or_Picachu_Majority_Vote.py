@@ -1,29 +1,24 @@
 import os
 import math
 import matplotlib.pyplot as plt
-from collections import Counter
 
 # functions
 
 def euclidean_distance(point1, point2):
     return math.sqrt((point1[0] - point2[0]) ** 2 + (point1[1] - point2[1]) ** 2)
 
-def find_nearest_point(test_point, training_points):
-    closest_point = None
-    shortest_distance = float("inf")
-    for (width, height, label) in training_points:
-        distance = euclidean_distance(test_point, (width, height))
-        if distance < shortest_distance:
-            closest_point = (width, height, label)
-            shortest_distance = distance
-    return closest_point
+    # källa som hjälpte med lambda sortering, https://sparkbyexamples.com/python/sort-using-lambda-in-python/
+def find_k_nearest_point(test_point, training_points, k=10):
+    # beräkna avstånd från testpunkter till alla träningspunkter
+    distances = [(euclidean_distance(test_point, (width, height)), width, height, label) for (width, height, label) in training_points]
+    sorted_distances = sorted(distances, key=lambda x: x[0])
+    return sorted_distances[:k]
 
-def classify_test_point(test_point, training_points):
-    nearest_point = find_nearest_point(test_point, training_points)
-    if nearest_point[-1] == 0:
-        return "Pichu"
-    else:
-        return "Pikachu"
+def classify_test_point(test_point, training_points, k=10):
+    k_nearest_point = find_k_nearest_point(test_point, training_points, k)
+    pichu_count = sum([1 for _, _, _, label in k_nearest_point if label == 0])
+    pikachu_count = k - pichu_count
+    return "Pichu" if pichu_count > pikachu_count else "Pikachu"
 
 data_points = []
 with open("labs\lab_2\datapoints.txt", "r") as file:
@@ -42,17 +37,18 @@ while True:
         break
 
     try:
-        width, height = map(float, user_input.split(",")) # Map(float) applicerar en given funktion, mitt fall float på user_inputs, returnerar ny iterable med transformerade element.
+        # Map(float) applicerar en given funktion, mitt fall float på user_inputs, returnerar ny iterable med transformerade element.
+        width, height = map(float, user_input.split(",")) 
         if width < 0 or height < 0:
             print("Both width and height should be positive numbers.")
             continue
-
         test_point = (width, height)
-        classification = classify_test_point(test_point, data_points)
+        classification = classify_test_point(test_point, data_points, k=10)
         print(f"Sample with (width, height): {test_point} classified as {classification}")
 
     except ValueError:
         print("Invalid input format. Please enter the point as 'width,height', both positive.")
+        
 
 
 
@@ -72,11 +68,17 @@ for (width, height, label) in data_points:
         x1.append(width)
         y1.append(height)
 
-plt.scatter(x0, y0, label='Pichu', color='orange')
-plt.scatter(x1, y1, label='Pikachu', color='yellow')
-plt.xlabel('Width (cm)')
-plt.ylabel('Height (cm)')
-plt.legend()
-plt.title('Pichu and Pikachu Data Points')
+fig, ax = plt.subplots()
+
+
+ax.scatter(x0, y0, label='Pichu', color='orange')
+ax.scatter(x1, y1, label='Pikachu', color='yellow')
+ax.set_xlabel('Width (cm)')
+ax.set_ylabel('Height (cm)')
+ax.legend()
+ax.set_title('Pichu and Pikachu Data Points')
+ax.set_facecolor('lightgray')
+
+fig.patch.set_facecolor('lightblue')
 
 plt.show()
