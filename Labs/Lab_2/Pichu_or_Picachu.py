@@ -41,6 +41,7 @@ while True:
         break
 
     try:
+        # Map(float) applicerar en given funktion, mitt fall float på user_inputs, returnerar ny iterable med transformerade element.
         width, height = map(float, user_input.split(","))
 
         if width < 0 or height < 0:
