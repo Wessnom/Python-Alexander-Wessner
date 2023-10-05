@@ -7,22 +7,18 @@ import matplotlib.pyplot as plt
 def euclidean_distance(point1, point2):
     return math.sqrt((point1[0] - point2[0]) ** 2 + (point1[1] - point2[1]) ** 2)
 
-def find_nearest_point(test_point, training_points):
-    closest_point = None
-    shortest_distance = float("inf")
-    for (width, height, label) in training_points:
-        distance = euclidean_distance(test_point, (width, height))
-        if distance < shortest_distance:
-            closest_point = (width, height, label)
-            shortest_distance = distance
-    return closest_point
+    # källa som hjälpte med lambda sortering, https://sparkbyexamples.com/python/sort-using-lambda-in-python/
+def find_k_nearest_point(test_point, training_points, k=10):
+    # beräkna avstånd från testpunkter till alla träningspunkter
+    distances = [(euclidean_distance(test_point, (width, height)), width, height, label) for (width, height, label) in training_points]
+    sorted_distances = sorted(distances, key=lambda x: x[0])
+    return sorted_distances[:k]
 
-def classify_test_point(test_point, training_points):
-    nearest_point = find_nearest_point(test_point, training_points)
-    if nearest_point[-1] == 0:
-        return "Pichu"
-    else:
-        return "Pikachu"
+def classify_test_point(test_point, training_points, k=10):
+    k_nearest_point = find_k_nearest_point(test_point, training_points, k)
+    pichu_count = sum([1 for _, _, _, label in k_nearest_point if label == 0])
+    pikachu_count = k - pichu_count
+    return "Pichu" if pichu_count > pikachu_count else "Pikachu"
 
 data_points = []
 with open("labs\lab_2\datapoints.txt", "r") as file:
@@ -42,18 +38,17 @@ while True:
 
     try:
         # Map(float) applicerar en given funktion, mitt fall float på user_inputs, returnerar ny iterable med transformerade element.
-        width, height = map(float, user_input.split(","))
-
+        width, height = map(float, user_input.split(",")) 
         if width < 0 or height < 0:
             print("Both width and height should be positive numbers.")
             continue
-
         test_point = (width, height)
-        classification = classify_test_point(test_point, data_points)
+        classification = classify_test_point(test_point, data_points, k=10)
         print(f"Sample with (width, height): {test_point} classified as {classification}")
 
     except ValueError:
         print("Invalid input format. Please enter the point as 'width,height', both positive.")
+        
 
 
 
@@ -62,11 +57,6 @@ while True:
 #for test_point in test_points:
 #    classification = classify_test_point(test_point, data_points)
 #    print(f"Sample with (width, height): {test_point} classified as {classification}")
-
-
-""" https://python-charts.com/correlation/scatter-plot-matplotlib/
-    hjälpmedel vid integrering av matplotlib scatter-plot
-"""
 
 x0, y0, x1, y1 = [], [], [], []
 
