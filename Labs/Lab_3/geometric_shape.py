@@ -6,49 +6,51 @@ class Person:
     self.age = age
 
 class Geometric_shape:
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
     
+    @property
     def area(self):
         '''Calculate area of object'''
         raise NotImplementedError
     
+    @property
     def circumference(self): 
         '''Calculate circumference of object'''
         raise NotImplementedError
         
     def __eq__(self, other):
         '''Check if self is equal to other object'''
-        if self.area() == other.area() and self.circumference() == other.circumference():
-            return True
-        else:
-            return False
-
+        return self.area == other.area and self.circumference == other.circumference
         
     def __lt__(self, other): 
         '''Check if self area is less than other object area of same class'''
-        raise NotImplementedError
+        return self.area < other.area
         
     def __gt__(self, other): 
         '''Check if self area is greather than other object area of same class'''
-        raise NotImplementedError
+        return self.area > other.area
     
     def __leq__(self, other): 
         ''''''
-        raise NotImplementedError
+        self.area <= other.area
         
     def __geq__(self, other):
         ''''''
+        return self.area >= other.area
+        
+    def __repr__(self):
         raise NotImplementedError
         
-    def __repr__():
-        NotImplementedError
-        
-    def __str__():
-        
+    def __str__(self):
+        raise NotImplementedError
+    
     def transpose(self, x, y):
-        NotImplementedError
-           
+        raise NotImplementedError
+
     def is_inside(self, x, y):
-        NotImplementedError
+        raise NotImplementedError
         
         
     
