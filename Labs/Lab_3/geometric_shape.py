@@ -24,19 +24,19 @@ class Geometric_shape:
         return self.area == other.area and self.circumference == other.circumference
         
     def __lt__(self, other): 
-        '''Check if self area is less than other object area of same class'''
+        '''Check if self area is less than other object area of same class.'''
         return self.area < other.area
         
     def __gt__(self, other): 
-        '''Check if self area is greather than other object area of same class'''
+        '''Check if self area is greather than other object area of same class.'''
         return self.area > other.area
     
     def __leq__(self, other): 
-        ''''''
+        '''Check if self area is lesser than or equal to the other object of same class.'''
         self.area <= other.area
         
     def __geq__(self, other):
-        ''''''
+        '''Check if self area is greather than or equal to the other object of the same class.'''
         return self.area >= other.area
         
     def __repr__(self):
@@ -45,7 +45,9 @@ class Geometric_shape:
     def __str__(self):
         return f"{self.__class__.__name__} centered at ({self.x}, {self.y}) with area {self.area} and circumference {self.circumference}"
     
-    def transpose(self, dx, dy): # Inkludera felhantering
+    def transpose(self, dx, dy): # Inkludera felhantering check!
+        if not isinstance(dx, (int, float)) or not isinstance(dy(int, float)):
+            raise ValueError("Values must be numbers.")
         self.x += dx
         self.y += dy
 
