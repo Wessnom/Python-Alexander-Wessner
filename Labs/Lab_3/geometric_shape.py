@@ -1,9 +1,5 @@
 from math import pi
 # from math import sqrt // for triangles
-class Person:
-  def __init__(self, name, age):
-    self.name = name
-    self.age = age
 
 class Geometric_shape:
     '''Represents a general geometric shape with a center position (x, y).'''
