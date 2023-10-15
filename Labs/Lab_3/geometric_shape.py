@@ -62,6 +62,14 @@ class Circle(Geometric_shape):
     def __init__(self, x, y, radius):
         super().__init__(x, y)
         self.radius = radius
+        
+    def __repr__(self):
+        '''Returns a string representation of the circle object. '''
+        return f"Circle(x={self.x}, y={self.y}, radius={self.radius})"
+    
+    def __str__(self):
+        '''Returns a string representation of the circle object describing its center and radius.'''
+        return f"Circle with center at ({self.x}, {self.y}) and radius {self.radius}"
 
     @property
     def area(self):
@@ -86,6 +94,14 @@ class Rectangle(Geometric_shape):
         super().__init__(x, y)
         self.side1 = side1
         self.side2 = side2
+        
+    def __repr__(self):
+        '''Returns a string representation of the rectangle object.'''
+        return f"Rectangle(x={self.x}, y={self.y}, side1={self.side1}, side2={self.side2})"
+    
+    def __str__(self):
+        '''Returns a string representation of the rectangle describing its center and sides.'''
+        return f"Rectangle with center at ({self.x}, {self.y}) and sides of length {self.side1} and {self.side2}"
 
     @property
     def area(self):
