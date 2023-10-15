@@ -74,7 +74,7 @@ class Circle(Geometric_shape):
         return distance <= self.radius  # return True if the distance is less than or equal to the radius, else return False
 
     def is_unit(self):
-        return self.radius == 1
+        return self.radius == 1 and self.x == 0 and self.y == 0 # Enligt lab instruktioner ser det ut som en enhetscirkel endast ska utgå från Origo. Diskuterbart.
     
     
 class Rectangle(Geometric_shape):
@@ -100,3 +100,4 @@ class Rectangle(Geometric_shape):
     
     def is_square(self):
         return self.side1 == self.side2
+    
