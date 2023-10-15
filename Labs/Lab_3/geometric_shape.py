@@ -40,10 +40,10 @@ class Geometric_shape:
         return self.area >= other.area
         
     def __repr__(self):
-        raise NotImplementedError
+        return f"{self.__class__.__name__}(x={self.x}, y={self.y})"
         
     def __str__(self):
-        raise NotImplementedError
+        return f"{self.__class__.__name__} centered at ({self.x}, {self.y}) with area {self.area} and circumference {self.circumference}"
     
     def transpose(self, dx, dy): # Inkludera felhantering
         self.x += dx
