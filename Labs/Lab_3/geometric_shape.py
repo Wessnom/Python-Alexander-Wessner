@@ -46,7 +46,7 @@ class Geometric_shape:
         return f"{self.__class__.__name__} centered at ({self.x}, {self.y}) with area {self.area} and circumference {self.circumference}"
     
     def transpose(self, dx, dy): # Inkludera felhantering check!
-        if not isinstance(dx, (int, float)) or not isinstance(dy(int, float)):
+        if not isinstance(dx, (int, float)) or not isinstance(dy, (int, float)):
             raise ValueError("Values must be numbers.")
         self.x += dx
         self.y += dy

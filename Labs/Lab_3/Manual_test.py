@@ -1,4 +1,4 @@
-from geometric_shape import Circle, Rectangle
+from Geometric_shape import Circle, Rectangle
 
 cirkel1 = Circle(x=0, y=0, radius=1)  # enhetscirkel
 cirkel2 = Circle(x=1, y=1, radius=1)
