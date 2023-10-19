@@ -1,5 +1,4 @@
 from math import pi
-# from math import sqrt // for triangles
 
 class Geometric_shape:
     '''Represents a general geometric shape with a center position (x, y).'''
@@ -45,9 +44,9 @@ class Geometric_shape:
     def __str__(self):
         return f"{self.__class__.__name__} centered at ({self.x}, {self.y}) with area {self.area} and circumference {self.circumference}"
     
-    def transpose(self, dx, dy): # Inkludera felhantering check!
+    def transpose(self, dx, dy):
         if not isinstance(dx, (int, float)) or not isinstance(dy, (int, float)):
-            raise ValueError("Values must be numbers.")
+            raise ValueError("Translation values must be numbers.")
         self.x += dx
         self.y += dy
 
@@ -84,7 +83,7 @@ class Circle(Geometric_shape):
         return distance <= self.radius  # return True if the distance is less than or equal to the radius, else return False
 
     def is_unit(self):
-        return self.radius == 1 and self.x == 0 and self.y == 0 # Enligt lab instruktioner ser det ut som en enhetscirkel endast ska utgå från Origo. Diskuterbart.
+        return self.radius == 1 and self.x == 0 and self.y == 0 # Enligt lab instruktioner ser det ut som en enhetscirkel endast ska utgå från Origo.
     
     
 class Rectangle(Geometric_shape):
